@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DMRC Regional Minimum Wage Monitoring</title>
+
+    
+
+    <!-- Modern Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
+
+    <!-- Stylesheets -->
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    
+
+    <!-- SEO Meta Tags -->
+
+    <meta name="description" content="DMRC Regional Minimum Wage Monitoring - Latest wage orders and salary information across all regions">
+
+    <meta name="keywords" content="DMRC, Philippines, minimum wage, regional wages, NWPC, DOLE, salary, wage orders">
+
+    <meta name="author" content="Wage Rates Project">
+
+    
+
+    <!-- Open Graph Meta Tags -->
+
+    <meta property="og:title" content="DMRC Regional Minimum Wage Monitoring">
+
+    <meta property="og:description" content="Latest minimum wage rates across all regions in the Philippines">
+
+    <meta property="og:type" content="website">
+
+    
+
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+
+</head>
+
+<body>
+
+    <header class="bg-primary text-white py-4">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <h1 class="h3 mb-0">DMRC Minimum Wage Rates Monitoring</h1>
+
+                    <p class="mb-0 mt-2 small opacity-75">Based on NWPC–DOLE Wage Orders</p>
+
+                </div>
+
+                <div id="last-updated" class="text-end">
+
+                    <div class="small opacity-75">Last updated</div>
+
+                    <div class="fw-bold">Loading...</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="container my-4">
+
+        <!-- Search and Filter Section -->
+
+        <div class="row g-3 g-md-4 align-items-stretch mb-4" role="search" aria-label="Filter wage data">
+
+            <div class="col-12 col-lg-4">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+
+                        <i class="bi bi-search" aria-hidden="true"></i>
+
+                    </span>
+
+                    <input
+                        type="text"
+                        id="search-input"
+                        class="form-control"
+                        placeholder="Search regions, wage orders, notes..."
+                        aria-label="Search wage data"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <select id="sort-select" class="form-select">
+
+                    <option value="region-asc">Sort by Region (A-Z)</option>
+
+                    <option value="region-desc">Sort by Region (Z-A)</option>
+
+                    <option value="wage-high">Highest Wage First</option>
+
+                    <option value="wage-low">Lowest Wage First</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <select id="sector-filter" class="form-select">
+
+                    <option value="all">All Sectors</option>
+
+                    <option value="non-agriculture">Non-Agriculture</option>
+
+                    <option value="agriculture">Agriculture</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <button
+                    id="toggle-view"
+                    class="btn btn-outline-primary w-100"
+                    type="button"
+                    aria-label="Toggle between grid and table view"
+                >
+
+                    <i class="bi bi-list-ul me-2"></i>List View
+
+                </button>
+
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-2">
+
+                <div class="form-check form-switch d-flex align-items-center justify-content-center h-100">
+
+                    <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        id="notification-toggle"
+                        aria-label="Enable wage update notifications"
+                    >
+
+                    <label class="form-check-label" for="notification-toggle">
+
+                        <i class="bi bi-bell me-1"></i>Enable Notifications
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+            <!-- Main Content Area - Full Width -->
+
+            <div class="col-12">
+
+                <div id="wage-cards" class="row g-4">
+
+                    <!-- Wage cards will be inserted here by JavaScript -->
+
+                    <div class="col-12">
+
+                        <div class="spinner-container">
+
+                            <div class="spinner-border text-primary" role="status">
+
+                                <span class="visually-hidden">Loading...</span>
+
+                            </div>
+
+                            <p>Loading wage data...</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <footer class="bg-light py-4 mt-5">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h6 class="text-primary mb-3">About Wage Rates</h6>
+
+                    <p class="text-muted mb-2">This application displays the latest minimum wage rates across all regions in the Philippines, as mandated by the National Wages and Productivity Commission (NWPC) and Department of Labor and Employment (DOLE).</p>
+
+                    <p class="text-muted mb-0">Data is sourced from official wage orders and is updated regularly.</p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h6 class="text-primary mb-3">Information</h6>
+
+                    <p class="text-muted mb-2">Last updated: <span id="footer-update-date">Loading...</span></p>
+
+                    <p class="text-muted mb-0">Data provided by NWPC-DOLE. This is an unofficial application.</p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-3">
+
+            <div class="text-center text-muted small">
+
+                <p class="mb-0"> 2026 Philippines Minimum Wage Rates. All rights reserved.</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/debug.js?v=2.0.1"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging-compat.js"></script>
+
+    <script src="firebase-config.js"></script>
+
+    <script src="js/utils.js?v=2.0.1"></script>
+
+    <script>
+        // Load app after utilities are available. Avoid infinite polling.
+        (function loadWageApp() {
+            const APP_SRC = 'js/app.js?v=2.0.1';
+            const TIMEOUT_MS = 5000;
+            const START = Date.now();
+
+            function injectAppScript() {
+                // Prevent double-injection
+                if (document.querySelector('script[data-wage-app]')) return;
+
+                const script = document.createElement('script');
+                script.src = APP_SRC;
+                script.type = 'module';
+                script.setAttribute('data-wage-app', 'true');
+                script.onerror = () => {
+                    console.error('Failed to load app script:', APP_SRC);
+                };
+                document.body.appendChild(script);
+            }
+
+            if (window.WageUtils) {
+                injectAppScript();
+                return;
+            }
+
+            const timer = setInterval(() => {
+                if (window.WageUtils) {
+                    clearInterval(timer);
+                    injectAppScript();
+                    return;
+                }
+
+                if (Date.now() - START > TIMEOUT_MS) {
+                    clearInterval(timer);
+                    console.error('WageUtils did not load within timeout; app not started.');
+                    const container = document.getElementById('wage-cards');
+                    if (container) {
+                        container.innerHTML = `
+                          <div class="col-12">
+                            <div class="alert alert-danger">
+                              <strong>Failed to start the app.</strong>
+                              Please refresh. If the problem persists, clear cache/service worker.
+                            </div>
+                          </div>
+                        `;
+                    }
+                }
+            }, 100);
+        })();
+    </script>
+
+</body>
+
+</html>
+

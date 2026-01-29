@@ -1,0 +1,28 @@
+{
+  "name": "dmrc-regional-minimum-wage-monitoring",
+  "version": "1.0.0",
+  "description": "A modern web application displaying minimum wage rates across all regions in the Philippines",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 3000",
+    "dev": "http-server -p 8080 -o",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": [
+    "philippines",
+    "DMRC",
+    "wage",
+    "minimum-wage",
+    "nwpc",
+    "dole",
+    "regional-wages"
+  ],
+  "author": "Jhudel",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

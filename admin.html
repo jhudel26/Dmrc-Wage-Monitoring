@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - DMRC Regional Minimum Wage Monitoring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <!-- Sidebar / Offcanvas Navigation -->
+            <nav id="adminSidebar" class="col-md-3 col-lg-2 sidebar offcanvas-lg offcanvas-start" tabindex="-1" aria-labelledby="adminSidebarLabel">
+                <div class="offcanvas-header d-lg-none">
+                    <h5 class="offcanvas-title" id="adminSidebarLabel">Wage Rates Admin</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close navigation"></button>
+                </div>
+                <div class="offcanvas-body p-0">
+                    <div class="text-center mb-4 d-none d-lg-block">
+                        <h4>Wage Rates Admin</h4>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="regions-tab">
+                                <i class="bi bi-map"></i> Regions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="add-region-tab">
+                                <i class="bi bi-plus-circle"></i> Add New Region
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="import-export-tab">
+                                <i class="bi bi-arrow-left-right"></i> Import/Export
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link text-warning" href="index.html" target="_blank">
+                                <i class="bi bi-eye"></i> View Public Site
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="col main-content">
+                <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar" aria-controls="adminSidebar" aria-label="Open navigation menu">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <h2 id="page-title" class="mb-1">Manage Regions</h2>
+                        <p class="admin-page-subtitle mb-0">
+                            Update regional wage data. Changes are synced to the public site.
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center admin-header-actions">
+                        <button id="save-changes" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Save Changes
+                        </button>
+                        <div class="alert alert-success d-none mb-0" id="save-success">
+                            <i class="bi bi-check-circle"></i> Changes saved successfully
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regions List -->
+                <div id="regions-section">
+                    <div class="card admin-table-card">
+                        <div class="card-header">
+                            <h5 class="mb-0">All Regions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Region</th>
+                                            <th>Wage Order</th>
+                                            <th>Effective Date</th>
+                                            <th>Non-Agri Wage</th>
+                                            <th>Agri Wage</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="regions-table-body">
+                                        <!-- Regions will be loaded here -->
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <div class="spinner-border text-primary" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Import/Export Section -->
+                <div id="import-export-section" style="display: none;">
+                    <div class="row">
+                        <!-- Export Card -->
+                        <div class="col-md-6">
+                            <div class="card admin-table-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <i class="bi bi-download me-2"></i>Export Data
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Download current wage rates data for backup or editing.</p>
+                                    
+                                    <div class="d-grid gap-2">
+                                        <button id="download-json" class="btn btn-primary">
+                                            <i class="bi bi-file-earmark-code me-2"></i>Download JSON
+                                        </button>
+                                        <button id="download-csv" class="btn btn-success">
+                                            <i class="bi bi-file-earmark-spreadsheet me-2"></i>Download CSV
+                                        </button>
+                                        <button id="download-excel" class="btn btn-info text-white">
+                                            <i class="bi bi-file-earmark-excel me-2"></i>Download Excel
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <small class="text-muted">
+                                            <i class="bi bi-info-circle"></i>
+                                            Last exported: <span id="last-export-date">Never</span>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Import Card -->
+                        <div class="col-md-6">
+                            <div class="card admin-table-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <i class="bi bi-upload me-2"></i>Import Data
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Upload wage rates data from JSON, CSV, or Excel files.</p>
+                                    
+                                    <div class="mb-3">
+                                        <label for="import-file" class="form-label">Choose File</label>
+                                        <input type="file" class="form-control" id="import-file" accept=".json,.csv,.xlsx,.xls">
+                                        <div class="form-text">Supported formats: JSON, CSV, Excel (.xlsx, .xls)</div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2">
+                                        <button id="upload-file" class="btn btn-warning" disabled>
+                                            <i class="bi bi-cloud-upload me-2"></i>Upload & Import
+                                        </button>
+                                        <div class="btn-group" role="group">
+                                            <button id="download-template" class="btn btn-outline-secondary">
+                                                <i class="bi bi-file-earmark-text me-2"></i>CSV Template
+                                            </button>
+                                            <button id="download-excel-template" class="btn btn-outline-primary">
+                                                <i class="bi bi-file-earmark-excel me-2"></i>Excel Template
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <div class="alert alert-warning d-none" id="import-warning">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>
+                                            <span id="import-warning-text"></span>
+                                        </div>
+                                        <small class="text-muted">
+                                            <i class="bi bi-shield-check"></i>
+                                            Current data will be backed up automatically before import.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Import Preview Section -->
+                    <div class="card mt-4 admin-table-card d-none" id="import-preview-card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="bi bi-eye me-2"></i>Import Preview
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle me-2"></i>
+                                Review the data below before confirming the import. You can make changes if needed.
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-sm" id="import-preview-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Region</th>
+                                            <th>Wage Order</th>
+                                            <th>Non-Agri Rate</th>
+                                            <th>Agri Rate</th>
+                                            <th>Effective Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="import-preview-body">
+                                        <!-- Preview data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <button id="cancel-import" class="btn btn-outline-secondary">
+                                    <i class="bi bi-x-lg me-2"></i>Cancel
+                                </button>
+                                <button id="confirm-import" class="btn btn-success">
+                                    <i class="bi bi-check-lg me-2"></i>Confirm Import
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add/Edit Region Form -->
+                <div id="region-form-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0" id="form-title">Add New Region</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="region-form">
+                                <input type="hidden" id="edit-index" value="">
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="region-name" class="form-label">Region Name</label>
+                                        <input type="text" class="form-control" id="region-name" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="region-id" class="form-label">Region ID</label>
+                                        <input type="text" class="form-control" id="region-id" required>
+                                        <div class="form-text">Short identifier (e.g., ncr, car, region1)</div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="wage-order" class="form-label">Wage Order</label>
+                                        <input type="text" class="form-control" id="wage-order" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label for="date-effective" class="form-label">Date Effective</label>
+                                        <input type="date" class="form-control" id="date-effective" required>
+                                    </div>
+                                </div>
+
+                                <h5 class="mt-4 mb-3">Wage Rates</h5>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-light">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6 class="mb-0">Non-Agriculture</h6>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enable-non-agri-tranches">
+                                                        <label class="form-check-label" for="enable-non-agri-tranches">Tranches</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="non-agri-single">
+                                                    <div class="mb-3">
+                                                        <label for="non-agri-amount" class="form-label">Amount (₱)</label>
+                                                        <input type="number" class="form-control" id="non-agri-amount" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="non-agri-coverage" class="form-label">Coverage</label>
+                                                        <input type="text" class="form-control" id="non-agri-coverage" required>
+                                                    </div>
+                                                </div>
+                                                <div id="non-agri-tranches" style="display: none;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tranche 1 (Current)</label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="number" class="form-control mb-2" id="non-agri-tranche1-amount" placeholder="Amount (₱)">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="date" class="form-control mb-2" id="non-agri-tranche1-date" placeholder="Effective Date">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="non-agri-tranche1-coverage" placeholder="Coverage">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tranche 2 (Upcoming)</label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="number" class="form-control mb-2" id="non-agri-tranche2-amount" placeholder="Amount (₱)">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="date" class="form-control mb-2" id="non-agri-tranche2-date" placeholder="Effective Date">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="non-agri-tranche2-coverage" placeholder="Coverage">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-light">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6 class="mb-0">Agriculture</h6>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enable-agri" checked>
+                                                        <label class="form-check-label" for="enable-agri">Enable</label>
+                                                    </div>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enable-agri-tranches">
+                                                        <label class="form-check-label" for="enable-agri-tranches">Tranches</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body" id="agri-fields">
+                                                <div id="agri-single">
+                                                    <div class="mb-3">
+                                                        <label for="agri-amount" class="form-label">Amount (₱)</label>
+                                                        <input type="number" class="form-control" id="agri-amount" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="agri-coverage" class="form-label">Coverage</label>
+                                                        <input type="text" class="form-control" id="agri-coverage" required>
+                                                    </div>
+                                                </div>
+                                                <div id="agri-tranches" style="display: none;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tranche 1 (Current)</label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="number" class="form-control mb-2" id="agri-tranche1-amount" placeholder="Amount (₱)">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="date" class="form-control mb-2" id="agri-tranche1-date" placeholder="Effective Date">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="agri-tranche1-coverage" placeholder="Coverage">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tranche 2 (Upcoming)</label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="number" class="form-control mb-2" id="agri-tranche2-amount" placeholder="Amount (₱)">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="date" class="form-control mb-2" id="agri-tranche2-date" placeholder="Effective Date">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="agri-tranche2-coverage" placeholder="Coverage">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Notes</label>
+                                    <textarea class="form-control" id="notes" rows="2"></textarea>
+                                    <div class="form-text">Any additional information about this region's wage rates</div>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-secondary" id="cancel-edit">
+                                        <i class="bi bi-x-lg"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save"></i> Save Region
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirm-delete-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this region? This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="js/debug.js?v=2.0.1"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="js/utils.js?v=2.0.1"></script>
+    <script src="js/admin.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+{
+    "regions": [
+        {
+            "id": "ncr",
+            "name": "National Capital Region (NCR)",
+            "wageOrder": "NCR-26",
+            "dateEffective": "2025-07-18",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 695,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 568,
+                    "coverage": "Plantation and non-plantation"
+                }
+            ],
+            "notes": "For establishments with 10 or more workers"
+        },
+        {
+            "id": "car",
+            "name": "Cordillera Administrative Region (CAR)",
+            "wageOrder": "CAR-24",
+            "dateEffective": "2025-12-30",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 505,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries"
+        },
+        {
+            "id": "region1",
+            "name": "Region I (Ilocos Region)",
+            "wageOrder": "RB 1-24",
+            "dateEffective": "2025-11-19",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 505,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries"
+        },
+        {
+            "id": "region2",
+            "name": "Region II (Cagayan Valley)",
+            "wageOrder": "RTWPB 2-24",
+            "dateEffective": "2025-11-05",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 500,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries"
+        },
+        {
+            "id": "region3",
+            "name": "Region III (Central Luzon)",
+            "wageOrder": "RBIII-26",
+            "dateEffective": "2025-10-30",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 570,
+                            "effectiveDate": "2025-10-30",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 600,
+                            "effectiveDate": "2026-04-16",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 540,
+                            "effectiveDate": "2025-10-30",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 570,
+                            "effectiveDate": "2026-04-16",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "upcoming"
+                        }
+                    ]
+                }
+            ],
+            "notes": "Two-tranche wage implementation"
+        },
+        {
+            "id": "region3-aurora",
+            "name": "Region III (Aurora)",
+            "wageOrder": "RBIII-26",
+            "dateEffective": "2025-10-30",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 530,
+                            "effectiveDate": "2025-10-30",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 560,
+                            "effectiveDate": "2026-04-16",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 515,
+                            "effectiveDate": "2025-10-30",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 545,
+                            "effectiveDate": "2026-04-16",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "upcoming"
+                        }
+                    ]
+                }
+            ],
+            "notes": "Two-tranche wage implementation"
+        },
+        {
+            "id": "region4a",
+            "name": "Region IV-A (CALABARZON)",
+            "wageOrder": "IVA-22",
+            "dateEffective": "2025-10-05",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 600,
+                    "coverage": "Extended Metropolitan Area \/ Component Cities"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 525,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": "see NWPC DOLE site for more info\r\r\nhttps:\/\/nwpc.dole.gov.ph\/region-iva\/"
+        },
+        {
+            "id": "region4b",
+            "name": "REGION IV-B (MIMAROPA)",
+            "wageOrder": "RB-MIMAROPA-13",
+            "dateEffective": "2026-01-01",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 455,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries"
+        },
+        {
+            "id": "region5",
+            "name": "Region V (Bicol Region)",
+            "wageOrder": "V-22",
+            "dateEffective": "2025-04-05",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 435,
+                    "coverage": "All industries"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries"
+        },
+        {
+            "id": "region6",
+            "name": "Region VI (Western Visayas)",
+            "wageOrder": "RBVI-29",
+            "dateEffective": "2025-11-19",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 550,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 520,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": "For establishments with 10 or more workers"
+        },
+        {
+            "id": "region7-A",
+            "name": "Region VII (Central Visayas)",
+            "wageOrder": "ROVII-26",
+            "dateEffective": "2025-10-04",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 540,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "CLASS A Cities of Carcar, Cebu, Danao, Lapulapu, Mandaue, Naga, Talisay & Municipalities of Compostela, Consolacion, Cordova, Liloan, Minglanilla, San Fernando or Expanded Metro Ceb"
+        },
+        {
+            "id": "region7-B",
+            "name": "Region VII (Central Visayas)",
+            "wageOrder": "ROVII-26",
+            "dateEffective": "2025-10-04",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 500,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "Other Cities and Municipalities Not Covered Under Class A "
+        },
+        {
+            "id": "region8",
+            "name": "Region VIII (Eastern Visayas)",
+            "wageOrder": "VIII-25",
+            "dateEffective": "2025-12-08",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 452,
+                            "effectiveDate": "2025-12-08",
+                            "coverage": "All industries",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 470,
+                            "effectiveDate": "2026-06-01",
+                            "coverage": "All industries",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries Two-tranche wage implementation"
+        },
+        {
+            "id": "region9",
+            "name": "Region IX (Zamboanga Peninsula)",
+            "wageOrder": "RIX-24",
+            "dateEffective": "2026-01-01",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 439,
+                            "effectiveDate": "2026-01-01",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 464,
+                            "effectiveDate": "2026-06-01",
+                            "coverage": "Non-agriculture, industrial\/commercial",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 426,
+                            "effectiveDate": "2026-01-01",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 451,
+                            "effectiveDate": "2026-06-01",
+                            "coverage": "Agriculture, plantation and non-plantation",
+                            "status": "upcoming"
+                        }
+                    ]
+                }
+            ],
+            "notes": "Two-tranche wage implementation"
+        },
+        {
+            "id": "region10",
+            "name": "Region X (Northern Mindanao)",
+            "wageOrder": "RBX-24",
+            "dateEffective": "2026-01-16",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 486,
+                            "effectiveDate": "2026-01-16",
+                            "coverage": "All industries Category 1",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 500,
+                            "effectiveDate": "2026-05-01",
+                            "coverage": "All industries Category 1",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 471,
+                            "effectiveDate": "2026-01-16",
+                            "coverage": "All industries Category 2",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 485,
+                            "effectiveDate": "2026-05-01",
+                            "coverage": "All industries Category 2",
+                            "status": "upcoming"
+                        }
+                    ]
+                }
+            ],
+            "notes": "Two-tranche wage implementation\r\r\nCategory 1 : Cities of Cagayan de Oro, Iligan, Malaybalay, Valencia, Gingoog, El Salvador and Ozamiz, and the Municipalities of Tagoloan, Villanueva, Jasaan, Opol, Maramag, Quezon, Manolo Fortich, and Lugait"
+        },
+        {
+            "id": "region11",
+            "name": "Region XI (Davao Region)",
+            "wageOrder": "XI-23",
+            "dateEffective": "2025-03-07",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 510,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 505,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": "region12",
+            "name": "Region XII (SOCCSKSARGEN)",
+            "wageOrder": "XII-25",
+            "dateEffective": "2025-12-15",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 460,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 443,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": "region13",
+            "name": "Region XIII (Caraga Region)",
+            "wageOrder": "RXIII-20",
+            "dateEffective": "2026-01-03",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "tranches": [
+                        {
+                            "amount": 455,
+                            "effectiveDate": "2026-01-03",
+                            "coverage": "All industries",
+                            "status": "current"
+                        },
+                        {
+                            "amount": 475,
+                            "effectiveDate": "2026-05-01",
+                            "coverage": "All industries",
+                            "status": "upcoming"
+                        }
+                    ]
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 0,
+                    "coverage": ""
+                }
+            ],
+            "notes": "All industries Two-tranche wage implementation"
+        },
+        {
+            "id": "barmm-a",
+            "name": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+            "wageOrder": "BARMM-04",
+            "dateEffective": "2025-07-17",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 411,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 386,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": "Cotabato City"
+        },
+        {
+            "id": "barmm-b",
+            "name": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+            "wageOrder": "BARMM-04",
+            "dateEffective": "2025-07-17",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 386,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 376,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": "Maguindanao del Nortem, Maguindanao del Sur\r\r\n,Lanao del Sur and Marawi ,Basilan and Lamitan City ,Sulu ,Tawi-Tawi"
+        },
+        {
+            "id": "barmm-c",
+            "name": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+            "wageOrder": "BARMM-04",
+            "dateEffective": "2025-07-17",
+            "rates": [
+                {
+                    "type": "Non-Agriculture",
+                    "amount": 391,
+                    "coverage": "Non-agriculture, industrial\/commercial"
+                },
+                {
+                    "type": "Agriculture",
+                    "amount": 366,
+                    "coverage": "Agriculture, plantation and non-plantation"
+                }
+            ],
+            "notes": "Special Geographical Area (SGA)"
+        }
+    ],
+    "lastUpdated": "2026-01-29"
+}
