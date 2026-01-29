@@ -1,0 +1,39 @@
+services:
+  # PHP Web Service
+  - type: web
+    name: wage-rates-monitoring
+    env: docker
+    runtime: docker
+    plan: free
+    repo: https://github.com/yourusername/wage-rates-v1.git  # Replace with your repo
+    rootDir: .
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    healthCheckTimeout: 100
+    autoDeploy: true
+    
+    # Environment variables
+    envVars:
+      - key: APACHE_DOCUMENT_ROOT
+        value: /var/www/html
+      - key: PHP_MEMORY_LIMIT
+        value: 256M
+      - key: PHP_MAX_EXECUTION_TIME
+        value: 300
+      - key: PHP_UPLOAD_MAX_FILESIZE
+        value: 10M
+      - key: PHP_POST_MAX_SIZE
+        value: 10M
+    
+    # Build and start commands
+    buildCommand: echo "Building Docker image..."
+    startCommand: echo "Starting Apache server..."
+
+# Optional: Add a PostgreSQL database if needed in the future
+databases:
+  - name: wage-rates-db
+    plan: free
+    ipAllowList: []
+    databaseName: wage_rates
+    user: wage_rates_user
